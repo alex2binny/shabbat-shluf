@@ -1,0 +1,69 @@
+<template name="setAlarm">
+  <div class="container center">
+    <h2>Select a date and time for an alarm</h2>
+    <br>
+    <div class="row">
+      <div class="input-field col s4">
+        <select class="hour">
+          <option value="" disabled selected>Hour</option>
+          <option value="01">01</option>
+          <option value="02">02</option>
+          <option value="03">03</option>
+          <option value="04">04</option>
+          <option value="05">05</option>
+          <option value="06">06</option>
+          <option value="07">07</option>
+          <option value="08">08</option>
+          <option value="09">09</option>
+          <option value="10">10</option>
+          <option value="11">11</option>
+          <option value="12">12</option>
+        </select>
+        <label>Hour</label>
+      </div>
+      <div class="input-field col s4">
+        <select class="minutes">
+          <option value="" disabled selected>Minutes</option>
+          <option value="10">10</option>
+          <option value="20">20</option>
+          <option value="30">30</option>
+          <option value="40">40</option>
+          <option value="50">50</option>
+        </select>
+        <label>Minutes</label>
+      </div>
+      <div class="input-field col s4">
+        <select class="ampm">
+          <option value="" disabled selected>AM/PM</option>
+          <option value="AM">AM</option>
+          <option value="PM">PM</option>
+        </select>
+        <label>AM/PM</label>
+      </div>
+      <a class="waves-effect waves-light btn blue col s12 m4 offset-m4 submit" style="margin-top: 30px;">Submit</a>
+    </div>
+    <br><br><br>
+    {{#if currentAlarm}}
+        <div class="row">
+          {{#each currentAlarm}}
+            <div class="col s12 center">
+              <a class="waves-effect waves-light btn blue col s2 offset-s2 previewAlarm" style="margin-top: 14px;">Preview Alarm</a>
+              <h4 class="col s4">Alarm: {{hour}}:{{minutes}} {{ampm}}</h4>
+              <i class="material-icons col s1 delete" style="margin-top: 18px;">delete</i>
+            </div>
+          {{/each}}
+        </div>
+    {{/if}}
+  </div>
+  <div id="modal1" class="modal">
+    <div class="modal-content center">
+      <h3 class="center">{{time}} Seconds Left!</h3><br>
+      <h4>Location: {{weatherData.name}}</h4>
+      <p style="text-transform: capitalize;">Weather description: {{weatherData.weather.[0].description}}</p>
+      <p style="text-transform: capitalize;">Rain Forcast: {{weatherData.weather.[0].main}}</p>
+    </div>
+    <div class="modal-footer">
+      <a href="#!" class=" modal-action modal-close waves-effect waves-green btn-flat">Close</a>
+    </div>
+  </div>
+</template>
